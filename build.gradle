@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation 'org.ow2.asm:asm:6.1.1'
+    implementation 'org.ow2.asm:asm-commons:6.1.1'
+    implementation 'org.ow2.asm:asm-util:6.1.1'
+
+    implementation 'org.javassist:javassist:3.22.0-GA'
+}
+
+test {
+    useJUnitPlatform()
+}
