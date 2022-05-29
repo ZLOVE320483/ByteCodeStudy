@@ -68,3 +68,50 @@
         }
     }
 ```
+- toClass
+> 将 `Class cat = Class.forName("com.zlove.bytecode.study.bean.Cat");` 替换成 `Class cat = clazz.toClass();` 依然可行。
+> 只不过需要注意的是一旦调用该方法，则无法继续修改已经被加载的class。
+
+- setInterfaces
+> 为例避免反射带来的效率问题，可以事先定义好接口
+```java
+public interface Animal {
+
+    void setName(String name);
+
+    String getName();
+
+    void printName();
+}
+```
+> 生成 class 文件时让其实现此接口
+```java
+CtClass animalInterface = classPool.get("com.zlove.bytecode.study.bean.Animal");
+clazz.setInterfaces(new CtClass[]{ animalInterface });
+```
+> 在反射生成对象之后，就可以将该对象强转成接口类型，由此可以避免反射去获取相应的方法带来的开销。
+```java
+public static void efficientInterface(CtClass clazz) {
+    try {
+        if (clazz == null) {
+            return;
+        }
+
+        Class cat = clazz.toClass();
+        Constructor constructor = cat.getConstructor(String.class);
+        Object obj = constructor.newInstance("zhanglei");
+        Animal animal = (Animal) obj;
+        System.out.println(animal.getName());
+        animal.setName("zlove.zhang");
+        animal.printName();
+    } catch (CannotCompileException
+            | InvocationTargetException
+            | NoSuchMethodException
+            | InstantiationException
+            | IllegalAccessException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+

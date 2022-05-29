@@ -2,7 +2,9 @@ package com.zlove.bytecode.study.bean;
 
 public interface Animal {
 
-    void eat();
+    void setName(String name);
 
-    void shout();
+    String getName();
+
+    void printName();
 }
