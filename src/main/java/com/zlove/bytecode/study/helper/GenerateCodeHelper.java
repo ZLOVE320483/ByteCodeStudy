@@ -103,6 +103,25 @@ public class GenerateCodeHelper {
         } catch (NotFoundException | CannotCompileException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void addFieldAndConstructor() {
+        try {
+            ClassPool classPool = ClassPool.getDefault();
+            CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Dog");
+            CtField weightField = new CtField(CtClass.intType, "weight", clazz);
+            weightField.setModifiers(Modifier.PRIVATE);
+            clazz.addField(weightField, CtField.Initializer.constant(0));
+
+            Class dog = clazz.toClass();
+            Object obj = dog.newInstance();
+            Field field = dog.getDeclaredField("weight");
+            field.setAccessible(true);
+            System.out.println(field.get(obj));
+        } catch (NotFoundException | CannotCompileException
+                | NoSuchFieldException | InstantiationException
+                | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }

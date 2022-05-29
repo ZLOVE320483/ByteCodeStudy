@@ -10,5 +10,6 @@ public class Main {
         CtClass clazz = GenerateCodeHelper.generateCat();
         GenerateCodeHelper.updateClass(clazz);
         GenerateCodeHelper.efficientInterface(clazz);
+        GenerateCodeHelper.addFieldAndConstructor();
     }
 }

@@ -132,3 +132,15 @@ public static void efficientInterface(CtClass clazz) {
     }
 ```
 
+- booleanType
+- byteType
+- voidType
+- ......
+> 指定类型
+```java
+CtMethod ctMethod = new CtMethod(CtClass.voidType, "printName", new CtClass[]{}, clazz);
+CtField weightField = new CtField(CtClass.intType, "weight", clazz);
+```
+
+
+
