@@ -113,5 +113,22 @@ public static void efficientInterface(CtClass clazz) {
     }
 }
 ```
+- defrost
+- freeze
+- CtMethod#insertBefore
+- CtMethod#insertAfter
+```java
+    public static void updateClass(CtClass clazz) {
+        try {
+            clazz.defrost();
+            CtMethod ctMethod = clazz.getDeclaredMethod("printName");
+            ctMethod.insertBefore("{System.out.println(\"Hello everyone, my name is:\");}");
+            ctMethod.insertAfter("{System.out.println(\"miao miao miao...\");}");
+            clazz.freeze();
+        } catch (NotFoundException | CannotCompileException e) {
+            e.printStackTrace();
+        }
 
+    }
+```
 

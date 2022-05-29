@@ -8,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         CtClass clazz = GenerateCodeHelper.generateCat();
+        GenerateCodeHelper.updateClass(clazz);
         GenerateCodeHelper.efficientInterface(clazz);
     }
 }
