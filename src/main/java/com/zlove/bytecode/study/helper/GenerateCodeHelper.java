@@ -146,4 +146,20 @@ public class GenerateCodeHelper {
             e.printStackTrace();
         }
     }
+
+    public static void constructorTest() {
+        try {
+            ClassPool classPool = ClassPool.getDefault();
+            CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Snoopy");
+            CtConstructor[] constructors = clazz.getConstructors();
+            for (CtConstructor cons : constructors) {
+                System.out.println(cons.getName());
+                System.out.println(cons.getLongName());
+            }
+            CtConstructor constructor = clazz.getDeclaredConstructor(new CtClass[]{CtClass.intType});
+            System.out.println("--->" + constructor.getLongName());
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -181,6 +181,50 @@ public static void annotationTest() {
 }
 ```
 
+- getConstructors
+- getDeclaredConstructor
+
+```java
+public class Snoopy extends Dog {
+
+    private int weight;
+
+    public Snoopy() {
+        super("snoopy");
+    }
+
+    public Snoopy(int weight) {
+        super("snoopy");
+        this.weight = weight;
+    }
+
+}
+```
+
+```java
+public static void constructorTest() {
+    try {
+        ClassPool classPool = ClassPool.getDefault();
+        CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Snoopy");
+        CtConstructor[] constructors = clazz.getConstructors();
+        for (CtConstructor cons : constructors) {
+            System.out.println(cons.getName());
+            System.out.println(cons.getLongName());
+        }
+        CtConstructor constructor = clazz.getDeclaredConstructor(new CtClass[]{CtClass.intType});
+        System.out.println("--->" + constructor.getLongName());
+    } catch (NotFoundException e) {
+        e.printStackTrace();
+    }
+}
+
+输出结果：Snoopy
+        com.zlove.bytecode.study.bean.Snoopy()
+        Snoopy
+        com.zlove.bytecode.study.bean.Snoopy(int)
+        --->com.zlove.bytecode.study.bean.Snoopy(int)
+```
+
 
 
 

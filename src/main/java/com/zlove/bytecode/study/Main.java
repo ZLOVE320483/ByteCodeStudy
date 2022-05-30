@@ -9,6 +9,7 @@ public class Main {
 //        GenerateCodeHelper.updateClass(clazz);
 //        GenerateCodeHelper.efficientInterface(clazz);
 //        GenerateCodeHelper.addFieldAndConstructor();
-        GenerateCodeHelper.annotationTest();
+//        GenerateCodeHelper.annotationTest();
+        GenerateCodeHelper.constructorTest();
     }
 }
