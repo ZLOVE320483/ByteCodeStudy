@@ -1,5 +1,7 @@
 package com.zlove.bytecode.study.helper;
 
+import com.zlove.bytecode.study.annotation.AnimalName;
+import com.zlove.bytecode.study.annotation.AnimalWeight;
 import com.zlove.bytecode.study.bean.Animal;
 import javassist.*;
 
@@ -121,6 +123,26 @@ public class GenerateCodeHelper {
         } catch (NotFoundException | CannotCompileException
                 | NoSuchFieldException | InstantiationException
                 | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void annotationTest() {
+        try {
+            ClassPool classPool = ClassPool.getDefault();
+            CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Dog");
+            Object[] annotations = clazz.getAnnotations();
+            for (Object ann : annotations) {
+                System.out.println(ann);
+            }
+            Object nameAnn = clazz.getAnnotation(AnimalName.class);
+            AnimalName name = (AnimalName) nameAnn;
+            System.out.println(name.value());
+
+            Object weightAnn = clazz.getAnnotation(AnimalWeight.class);
+            AnimalWeight weight = (AnimalWeight) weightAnn;
+            System.out.println(weight.value());
+        } catch (NotFoundException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

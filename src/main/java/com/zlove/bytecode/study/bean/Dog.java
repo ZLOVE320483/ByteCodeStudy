@@ -1,5 +1,10 @@
 package com.zlove.bytecode.study.bean;
 
+import com.zlove.bytecode.study.annotation.AnimalName;
+import com.zlove.bytecode.study.annotation.AnimalWeight;
+
+@AnimalName("Doggy")
+@AnimalWeight(3)
 public class Dog implements Animal {
 
     private String name;

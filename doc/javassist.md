@@ -142,5 +142,45 @@ CtMethod ctMethod = new CtMethod(CtClass.voidType, "printName", new CtClass[]{},
 CtField weightField = new CtField(CtClass.intType, "weight", clazz);
 ```
 
+- getAnnotations
+- getAnnotation
+
+```java
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.CLASS)
+public @interface AnimalName {
+    String value();
+}
+
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.CLASS)
+public @interface AnimalWeight {
+    int value();
+}
+```
+
+```java
+public static void annotationTest() {
+    try {
+        ClassPool classPool = ClassPool.getDefault();
+        CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Dog");
+        Object[] annotations = clazz.getAnnotations();
+        for (Object ann : annotations) {
+            System.out.println(ann);
+        }
+        Object nameAnn = clazz.getAnnotation(AnimalName.class);
+        AnimalName name = (AnimalName) nameAnn;
+        System.out.println(name.value());
+
+        Object weightAnn = clazz.getAnnotation(AnimalWeight.class);
+        AnimalWeight weight = (AnimalWeight) weightAnn;
+        System.out.println(weight.value());
+    } catch (NotFoundException | ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+
 
 
