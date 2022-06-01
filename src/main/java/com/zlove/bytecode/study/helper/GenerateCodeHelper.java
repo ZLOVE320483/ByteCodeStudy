@@ -162,4 +162,27 @@ public class GenerateCodeHelper {
             e.printStackTrace();
         }
     }
+
+    public static void fieldTest() {
+        try {
+            ClassPool classPool = ClassPool.getDefault();
+            CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Snoopy");
+            CtField wField = clazz.getDeclaredField("weight");
+            System.out.println("weight--->" + wField.getName());
+            CtField nField = clazz.getField("name");
+            System.out.println("name--->" +nField.getName());
+
+            CtField[] fields = clazz.getFields();
+            for (CtField f : fields) {
+                System.out.println("f ---> " + f.getName());
+            }
+
+            CtField[] declareFields = clazz.getDeclaredFields();
+            for (CtField df : declareFields) {
+                System.out.println("df ---> " + df.getName());
+            }
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

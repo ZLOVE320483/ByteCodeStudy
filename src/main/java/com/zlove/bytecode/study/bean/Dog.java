@@ -7,7 +7,7 @@ import com.zlove.bytecode.study.annotation.AnimalWeight;
 @AnimalWeight(3)
 public class Dog implements Animal {
 
-    protected String name;
+    public String name;
 
     public Dog() {
     }

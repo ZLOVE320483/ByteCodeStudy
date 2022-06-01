@@ -225,6 +225,35 @@ public static void constructorTest() {
         --->com.zlove.bytecode.study.bean.Snoopy(int)
 ```
 
+- getDeclaredField: 获取当前类某个field
+- getField: 可获取到当前类父类中的某个field
+- getFields: 获取父类 public fields
+- getDeclaredFields: 获取当前类所有fields
+```java
+public static void fieldTest() {
+    try {
+        ClassPool classPool = ClassPool.getDefault();
+        CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Snoopy");
+        CtField wField = clazz.getDeclaredField("weight");
+        System.out.println("weight--->" + wField.getName());
+        CtField nField = clazz.getField("name");
+        System.out.println("name--->" +nField.getName());
+
+        CtField[] fields = clazz.getFields();
+        for (CtField f : fields) {
+            System.out.println("f ---> " + f.getName());
+        }
+
+        CtField[] declareFields = clazz.getDeclaredFields();
+        for (CtField df : declareFields) {
+            System.out.println("df ---> " + df.getName());
+        }
+    } catch (NotFoundException e) {
+        e.printStackTrace();
+    }
+}
+```
+
 
 
 
