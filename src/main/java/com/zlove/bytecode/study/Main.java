@@ -11,6 +11,7 @@ public class Main {
 //        GenerateCodeHelper.addFieldAndConstructor();
 //        GenerateCodeHelper.annotationTest();
 //        GenerateCodeHelper.constructorTest();
-        GenerateCodeHelper.fieldTest();
+//        GenerateCodeHelper.fieldTest();
+        GenerateCodeHelper.testMethod();
     }
 }

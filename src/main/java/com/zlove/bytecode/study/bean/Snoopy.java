@@ -15,4 +15,16 @@ public class Snoopy extends Dog {
         this.weight = weight;
     }
 
+    private void speak() {
+        System.out.println("speaking...");
+    }
+
+    @Override
+    protected void eat() {
+        super.eat();
+    }
+
+    public void ask() {
+        System.out.println("asking...");
+    }
 }

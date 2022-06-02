@@ -30,4 +30,16 @@ public class Dog implements Animal {
     public void printName() {
         System.out.println(name);
     }
+
+    private void shout() {
+        System.out.println("shouting...");
+    }
+
+    protected void eat() {
+        System.out.println("eating...");
+    }
+
+    public void jump() {
+        System.out.println("jumping...");
+    }
 }

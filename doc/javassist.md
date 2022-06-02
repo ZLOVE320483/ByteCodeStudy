@@ -254,6 +254,33 @@ public static void fieldTest() {
 }
 ```
 
+- getMethods: 获取所有方法，包括所有父类，每一级父类，直到Object，祖坟都刨出来了
+- getDeclaredMethods: 获取当前类的所有方法
+- getDeclaredMethod: 获取当前类的某个方法
+- getMethod: 不会用
+```java
+public static void testMethod() {
+    try {
+        ClassPool classPool = ClassPool.getDefault();
+        CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Snoopy");
+        CtMethod[] methods = clazz.getMethods();
+        for (CtMethod m : methods) {
+            System.out.println("m ---> " + m.getLongName());
+        }
+        CtMethod[] declaredMethods = clazz.getDeclaredMethods();
+        for (CtMethod dm : declaredMethods) {
+            System.out.println("dm ---> " + dm.getLongName());
+        }
+
+        CtMethod speakMethod = clazz.getDeclaredMethod("speak");
+        System.out.println("speak ---> " + speakMethod.getLongName());
+
+    } catch (NotFoundException e) {
+        e.printStackTrace();
+    }
+}
+```
+
 
 
 
