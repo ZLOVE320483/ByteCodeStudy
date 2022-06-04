@@ -281,6 +281,36 @@ public static void testMethod() {
 }
 ```
 
+- getGenericSignature: 获取泛型的签名
+- getInterfaces: 获取当前类实现的所有接口
+- getPackageName
+- getSimpleName
+- getSuperclass
+- getURL
+```java
+public static void testOtherApi() {
+    try {
+        ClassPool classPool = ClassPool.getDefault();
+        CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Dog");
+        String signature = clazz.getGenericSignature();
+        System.out.println("signature ---> " + signature);
+
+        CtClass[] interfaces = clazz.getInterfaces();
+        for (CtClass in : interfaces) {
+            System.out.println(in.getName());
+        }
+
+        System.out.println("package name ---> " + clazz.getPackageName());
+        System.out.println("simple name ---> " + clazz.getSimpleName());
+        System.out.println("super class ---> " + clazz.getSuperclass().getSimpleName());
+        System.out.println("url ---> " + clazz.getURL());
+
+    } catch (NotFoundException e) {
+        e.printStackTrace();
+    }
+}
+```
+
 
 
 

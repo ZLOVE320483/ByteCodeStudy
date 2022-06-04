@@ -202,6 +202,30 @@ public class GenerateCodeHelper {
             CtMethod speakMethod = clazz.getDeclaredMethod("speak");
             System.out.println("speak ---> " + speakMethod.getLongName());
 
+            CtMethod jumpMethod = clazz.getMethod("ask", "public ask()V");
+            System.out.println("jump ---> " + jumpMethod.getLongName());
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void testOtherApi() {
+        try {
+            ClassPool classPool = ClassPool.getDefault();
+            CtClass clazz = classPool.get("com.zlove.bytecode.study.bean.Dog");
+            String signature = clazz.getGenericSignature();
+            System.out.println("signature ---> " + signature);
+
+            CtClass[] interfaces = clazz.getInterfaces();
+            for (CtClass in : interfaces) {
+                System.out.println(in.getName());
+            }
+
+            System.out.println("package name ---> " + clazz.getPackageName());
+            System.out.println("simple name ---> " + clazz.getSimpleName());
+            System.out.println("super class ---> " + clazz.getSuperclass().getSimpleName());
+            System.out.println("url ---> " + clazz.getURL());
+
         } catch (NotFoundException e) {
             e.printStackTrace();
         }

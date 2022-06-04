@@ -12,6 +12,7 @@ public class Main {
 //        GenerateCodeHelper.annotationTest();
 //        GenerateCodeHelper.constructorTest();
 //        GenerateCodeHelper.fieldTest();
-        GenerateCodeHelper.testMethod();
+//        GenerateCodeHelper.testMethod();
+        GenerateCodeHelper.testOtherApi();
     }
 }
